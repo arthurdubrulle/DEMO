@@ -1,1 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lolo Ti-Sable — cuisine créole, Baie-Mahault</title>
+<meta name="description" content="Cuisine créole de marché à Baie-Mahault. Ardoise du jour, réservation par téléphone, commande à emporter en direct.">
 
+<!-- Référencement local : à adapter avec les vraies coordonnées -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Lolo Ti-Sable",
+  "servesCuisine": "Créole",
+  "priceRange": "€€",
+  "telephone": "+590590000000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "12 rue des Raisiniers",
+    "addressLocality": "Baie-Mahault",
+    "postalCode": "97122",
+    "addressCountry": "GP"
+  },
+  "openingHours": ["Tu-Fr 11:30-14:30", "Th-Sa 19:00-22:00"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --lagon:#0E3B3E;
+  --lagon-clair:#17565A;
+  --sable:#F2EBDD;
+  --sable-fonce:#E2D6C0;
+  --encre:#1B1A17;
+  --safran:#E39B14;
+  --roucou:#B8412E;
+  --vert-madras:#3C7A56;
+
+  --serif:"Source Serif 4",Georgia,serif;
+  --grot:"Bricolage Grotesque",system-ui,sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+body{
+  margin:0;
+  background:var(--sable);
+  color:var(--encre);
+  font-family:var(--serif);
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{width:min(1080px,92vw);margin-inline:auto}
+
+a{color:inherit}
+:focus-visible{outline:3px solid var(--safran);outline-offset:3px;border-radius:2px}
+
+/* Galon madras : bandeau structurel, utilisé deux fois seulement */
+.madras{
+  height:7px;
+  background:repeating-linear-gradient(90deg,
+    var(--safran) 0 22px,
+    var(--roucou) 22px 34px,
+    var(--vert-madras) 34px 52px,
+    var(--lagon-clair) 52px 60px);
+}
+
+/* ---------- En-tête ---------- */
+header{
+  background:var(--lagon);
+  color:var(--sable);
+  padding:1.1rem 0;
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.marque{
+  font-family:var(--grot);
+  font-weight:800;
+  font-size:1.35rem;
+  letter-spacing:-.02em;
+  text-decoration:none;
+}
+nav ul{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{text-decoration:none;font-family:var(--grot);font-weight:500;font-size:.95rem;opacity:.82}
+nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- Héros : l'ardoise du jour ---------- */
+.hero{background:var(--lagon);color:var(--sable);padding:3rem 0 4.5rem}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:2.75rem}
+@media(min-width:860px){.hero-grid{grid-template-columns:1fr 1fr;align-items:end;gap:4rem}}
+
+.hero h1{
+  font-family:var(--grot);
+  font-weight:800;
+  font-size:clamp(2.6rem,7vw,4.4rem);
+  line-height:.96;
+  letter-spacing:-.035em;
+  margin:0 0 1.2rem;
+}
+.hero p{max-width:38ch;opacity:.88;margin:0 0 2rem;font-size:1.1rem}
+
+.actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{
+  font-family:var(--grot);font-weight:700;font-size:1rem;
+  padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;
+  display:inline-block;border:2px solid transparent;
+}
+.btn-plein{background:var(--safran);color:var(--encre)}
+.btn-plein:hover{background:#f2ad2a}
+.btn-vide{border-color:rgba(242,235,221,.45);color:var(--sable)}
+.btn-vide:hover{border-color:var(--sable)}
+
+/* L'ardoise */
+.ardoise{
+  background:#0A2C2E;
+  border:1px solid rgba(242,235,221,.18);
+  border-radius:4px;
+  padding:1.75rem 1.75rem 1.5rem;
+  box-shadow:0 18px 40px rgba(0,0,0,.28);
+}
+.ardoise .date{
+  font-family:var(--grot);font-weight:700;font-size:.82rem;
+  color:var(--safran);margin:0 0 1.25rem;letter-spacing:.01em;
+}
+.ardoise dl{margin:0}
+.ardoise dt{
+  font-family:var(--grot);font-weight:500;font-size:.78rem;
+  opacity:.6;margin-top:1.1rem;
+}
+.ardoise dt:first-child{margin-top:0}
+.ardoise dd{margin:.15rem 0 0;font-size:1.15rem;font-weight:600}
+.ardoise .prix{
+  margin-top:1.5rem;padding-top:1.1rem;
+  border-top:1px solid rgba(242,235,221,.18);
+  font-family:var(--grot);font-weight:700;font-size:1rem;
+  display:flex;justify-content:space-between;
+}
+
+/* ---------- Sections ---------- */
+section{padding:4.5rem 0}
+h2{
+  font-family:var(--grot);font-weight:700;
+  font-size:clamp(1.8rem,4vw,2.5rem);
+  letter-spacing:-.025em;line-height:1.1;margin:0 0 .6rem;
+}
+.chapo{max-width:56ch;margin:0 0 2.75rem;opacity:.78}
+
+/* Carte */
+.carte{display:grid;gap:2.75rem}
+@media(min-width:760px){.carte{grid-template-columns:repeat(3,1fr);gap:3rem}}
+.carte h3{
+  font-family:var(--grot);font-weight:700;font-size:1.05rem;
+  margin:0 0 1.1rem;padding-bottom:.5rem;
+  border-bottom:2px solid var(--encre);
+}
+.plat{margin-bottom:1.35rem}
+.plat .ligne{display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.plat .nom{font-weight:600}
+.plat .euro{font-family:var(--grot);font-weight:500;font-size:.95rem;white-space:nowrap}
+.plat .desc{font-size:.94rem;opacity:.7;font-style:italic;margin:.1rem 0 0;line-height:1.45}
+
+/* Commander en direct */
+.direct{background:var(--encre);color:var(--sable)}
+.direct .chapo{opacity:.75}
+.direct-grid{display:grid;gap:1.75rem;margin-top:2rem}
+@media(min-width:720px){.direct-grid{grid-template-columns:repeat(3,1fr)}}
+.etape{border-top:2px solid var(--safran);padding-top:1rem}
+.etape .num{font-family:var(--grot);font-weight:800;font-size:1.6rem;color:var(--safran);line-height:1}
+.etape h4{font-family:var(--grot);font-weight:700;font-size:1.05rem;margin:.5rem 0 .35rem}
+.etape p{margin:0;font-size:.96rem;opacity:.78}
+
+/* Infos pratiques */
+.infos{background:var(--sable-fonce)}
+.infos-grid{display:grid;gap:2.5rem}
+@media(min-width:760px){.infos-grid{grid-template-columns:1fr 1fr}}
+.horaires{width:100%;border-collapse:collapse;font-size:1rem}
+.horaires th{
+  text-align:left;font-family:var(--grot);font-weight:500;
+  font-size:.95rem;padding:.55rem 0;width:9rem;opacity:.75;
+}
+.horaires td{padding:.55rem 0;border-bottom:1px solid rgba(27,26,23,.14)}
+.horaires .ferme{opacity:.45;font-style:italic}
+.coord p{margin:0 0 1.1rem}
+.coord .libelle{
+  font-family:var(--grot);font-weight:500;font-size:.82rem;
+  opacity:.6;display:block;
+}
+.coord .valeur{font-size:1.15rem;font-weight:600}
+.coord a{text-decoration-thickness:1px;text-underline-offset:3px}
+
+/* Pied de page */
+footer{background:var(--lagon);color:var(--sable);padding:3rem 0 2.5rem;font-size:.95rem}
+.pied{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-start}
+footer a{opacity:.85}
+footer a:hover{opacity:1}
+.reseaux{display:flex;gap:1.2rem;list-style:none;margin:.6rem 0 0;padding:0;font-family:var(--grot);font-weight:500}
+.mention{opacity:.5;font-size:.85rem;margin:2.5rem 0 0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="marque" href="#">Lolo Ti-Sable</a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#carte">La carte</a></li>
+        <li><a href="#commander">Commander</a></li>
+        <li><a href="#infos">Nous trouver</a></li>
+        <li><a href="tel:+590590000000">0590 00 00 00</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="madras" role="presentation"></div>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Ce qu&rsquo;on a trouvé au marché ce matin.</h1>
+      <p>Cuisine créole de saison à Baie-Mahault. La carte bouge, le colombo reste. Douze couverts en terrasse, on prend les réservations par téléphone.</p>
+      <div class="actions">
+        <a class="btn btn-plein" href="tel:+590590000000">Réserver au 0590 00 00 00</a>
+        <a class="btn btn-vide" href="#carte">Voir la carte</a>
+      </div>
+    </div>
+
+    <div class="ardoise">
+      <p class="date">Ardoise du mercredi 9 septembre</p>
+      <dl>
+        <dt>Entrée</dt>
+        <dd>Accras de morue, sauce chien</dd>
+        <dt>Plat</dt>
+        <dd>Vivaneau grillé, purée de fruit à pain</dd>
+        <dt>Dessert</dt>
+        <dd>Blanc-manger coco</dd>
+      </dl>
+      <p class="prix"><span>Formule complète</span><span>19 €</span></p>
+    </div>
+  </div>
+</div>
+
+<section id="carte">
+  <div class="wrap">
+    <h2>La carte</h2>
+    <p class="chapo">Servie midi et soir. Les plats marqués d&rsquo;un astérisque dépendent de la pêche du jour — demandez-nous ce qu&rsquo;il reste.</p>
+
+    <div class="carte">
+      <div>
+        <h3>Pour commencer</h3>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Accras de morue</span><span class="euro">8 €</span></div>
+          <p class="desc">Six pièces, sauce chien maison</p>
+        </div>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Boudin créole</span><span class="euro">7 €</span></div>
+          <p class="desc">Deux pièces, piment végétarien</p>
+        </div>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Chiquetaille de morue</span><span class="euro">9 €</span></div>
+          <p class="desc">Avec avocat et pain natté</p>
+        </div>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Soupe z&rsquo;habitant</span><span class="euro">7 €</span></div>
+          <p class="desc">Légumes racines, servie le soir</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Les plats</h3>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Colombo de cabri</span><span class="euro">21 €</span></div>
+          <p class="desc">Mijoté la veille, riz et haricots rouges</p>
+        </div>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Poisson grillé du jour *</span><span class="euro">23 €</span></div>
+          <p class="desc">Vivaneau, dorade ou thon selon l&rsquo;arrivage</p>
+        </div>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Court-bouillon de poisson *</span><span class="euro">22 €</span></div>
+          <p class="desc">Sauce tomate créole, igname</p>
+        </div>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Poulet boucané</span><span class="euro">18 €</span></div>
+          <p class="desc">Fumé à la canne, gratin de christophine</p>
+        </div>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Légumes pays</span><span class="euro">15 €</span></div>
+          <p class="desc">Fruit à pain, dachine, madère, lait de coco</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Desserts &amp; boissons</h3>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Blanc-manger coco</span><span class="euro">6 €</span></div>
+        </div>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Tourment d&rsquo;amour</span><span class="euro">6 €</span></div>
+          <p class="desc">Confiture de coco, pâte sablée</p>
+        </div>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Sorbet coco</span><span class="euro">5 €</span></div>
+        </div>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Jus frais</span><span class="euro">4 €</span></div>
+          <p class="desc">Maracudja, goyave, corossol</p>
+        </div>
+        <div class="plat">
+          <div class="ligne"><span class="nom">Ti-punch</span><span class="euro">5 €</span></div>
+          <p class="desc">Rhum agricole, sucre de canne, citron vert</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="direct" id="commander">
+  <div class="wrap">
+    <h2>À emporter, en direct</h2>
+    <p class="chapo">On ne passe par aucune plateforme de livraison. Vous appelez, vous venez chercher — c&rsquo;est le même prix qu&rsquo;en salle.</p>
+
+    <div class="direct-grid">
+      <div class="etape">
+        <div class="num">1</div>
+        <h4>Vous appelez</h4>
+        <p>Entre 10h et 13h30 pour le midi, entre 17h et 21h pour le soir.</p>
+      </div>
+      <div class="etape">
+        <div class="num">2</div>
+        <h4>On prépare</h4>
+        <p>Comptez vingt minutes. On vous rappelle si un plat est parti.</p>
+      </div>
+      <div class="etape">
+        <div class="num">3</div>
+        <h4>Vous récupérez</h4>
+        <p>Directement au comptoir. Paiement sur place, carte acceptée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="infos" id="infos">
+  <div class="wrap">
+    <h2>Nous trouver</h2>
+    <div class="infos-grid">
+      <div>
+        <table class="horaires">
+          <caption class="chapo" style="text-align:left;margin-bottom:1rem">Horaires</caption>
+          <tbody>
+            <tr><th scope="row">Lundi</th><td class="ferme">Fermé</td></tr>
+            <tr><th scope="row">Mardi</th><td>11h30 – 14h30</td></tr>
+            <tr><th scope="row">Mercredi</th><td>11h30 – 14h30</td></tr>
+            <tr><th scope="row">Jeudi</th><td>11h30 – 14h30 &nbsp;·&nbsp; 19h – 22h</td></tr>
+            <tr><th scope="row">Vendredi</th><td>11h30 – 14h30 &nbsp;·&nbsp; 19h – 22h</td></tr>
+            <tr><th scope="row">Samedi</th><td>19h – 22h</td></tr>
+            <tr><th scope="row">Dimanche</th><td class="ferme">Fermé</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="coord">
+        <p>
+          <span class="libelle">Adresse</span>
+          <span class="valeur">12 rue des Raisiniers<br>97122 Baie-Mahault</span>
+        </p>
+        <p>
+          <span class="libelle">Téléphone</span>
+          <span class="valeur"><a href="tel:+590590000000">0590 00 00 00</a></span>
+        </p>
+        <p>
+          <span class="libelle">Stationnement</span>
+          <span class="valeur">Parking gratuit derrière le bâtiment</span>
+        </p>
+        <p>
+          <span class="libelle">Accès</span>
+          <span class="valeur">Salle et terrasse de plain-pied</span>
+        </p>
+        <p style="margin-top:1.6rem">
+          <a class="btn btn-plein" href="https://www.google.com/maps/search/?api=1&amp;query=Baie-Mahault+Guadeloupe">Ouvrir dans Maps</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="madras" role="presentation"></div>
+<footer>
+  <div class="wrap">
+    <div class="pied">
+      <div>
+        <p class="marque" style="font-size:1.2rem;margin:0">Lolo Ti-Sable</p>
+        <p style="margin:.4rem 0 0;opacity:.75">12 rue des Raisiniers, 97122 Baie-Mahault</p>
+      </div>
+      <div>
+        <span style="opacity:.6;font-family:var(--grot);font-size:.82rem">Nous suivre</span>
+        <ul class="reseaux">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Google</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="mention">Site de démonstration. Établissement, coordonnées et tarifs fictifs.</p>
+  </div>
+</footer>
+
+</body>
+</html>

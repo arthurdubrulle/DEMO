@@ -118,6 +118,19 @@ select option{color:#111;background:#fff}
 textarea{resize:vertical;min-height:80px}
 form .bouton{margin-top:1.4rem}
 .aide{font-size:.9rem;color:rgba(247,238,223,.7);margin-top:1rem}
+.confirmation{
+  margin-top:2rem;padding:1.6rem 1.8rem;
+  background:rgba(242,160,32,.14);border:2px solid var(--mangue);
+}
+.confirmation h3{font-size:1.35rem;color:var(--mangue);margin-bottom:.6rem}
+.confirmation p{margin:0 0 1rem;color:rgba(247,238,223,.9)}
+.confirmation .recap{
+  font-family:var(--display);font-variation-settings:"SOFT" 60,"WONK" 0;
+  font-size:1.1rem;line-height:1.5;white-space:pre-line;
+  border-left:3px solid rgba(242,160,32,.5);padding-left:1rem;margin-bottom:1.2rem;
+}
+.confirmation a.relance{color:var(--mangue);text-decoration:underline}
+.confirmation .bouton{margin-top:.4rem}
 .encadre{border:2px solid rgba(247,238,223,.35);padding:1.8rem}
 .encadre h3{font-size:1.4rem;margin-bottom:.6rem}
 .encadre p{margin:0 0 1.1rem;color:rgba(247,238,223,.85)}
@@ -303,6 +316,14 @@ a:focus-visible,.bouton:focus-visible,button:focus-visible{outline:3px solid var
         <button class="bouton" type="submit">Envoyer la demande sur WhatsApp</button>
         <p class="aide">Vous n'avez pas WhatsApp&nbsp;? Appelez le <a href="tel:+590690712188">0690 71 21 88</a>.</p>
       </form>
+
+      <div class="confirmation" id="confirmation" hidden>
+        <h3>Votre demande est prête</h3>
+        <p>WhatsApp vient de s'ouvrir avec ce message. Il part seulement quand vous appuyez sur envoyer, de votre côté.</p>
+        <div class="recap" id="recap"></div>
+        <p>Rien ne s'est ouvert&nbsp;? <a class="relance" id="relance" href="#" rel="noopener">Ouvrir WhatsApp</a> ou appelez le <a class="relance" href="tel:+590690712188">0690 71 21 88</a>.</p>
+        <p style="margin:0">Le restaurant vous confirmera la table par retour de message. Tant qu'il n'a pas répondu, la réservation n'est pas ferme.</p>
+      </div>
     </div>
 
     <div class="encadre">
@@ -434,8 +455,16 @@ a:focus-visible,.bouton:focus-visible,button:focus-visible{outline:3px solid var
     var remarque = document.getElementById("remarque").value.trim();
     if (remarque) lignes.push("Précisions : " + remarque);
 
-    var url = "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(lignes.join("\n"));
+    var texte = lignes.join("\n");
+    var url = "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(texte);
     window.open(url, "_blank", "noopener");
+
+    // Récapitulatif affiché sur la page, que WhatsApp se soit ouvert ou non
+    document.getElementById("recap").textContent = texte;
+    document.getElementById("relance").href = url;
+    var conf = document.getElementById("confirmation");
+    conf.hidden = false;
+    conf.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 })();
 </script>

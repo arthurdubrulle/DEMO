@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Événements et promotions — Planète Buffet</title>
+<meta name="description" content="Soirées à thème, promotions et dates spéciales du buffet Planète Buffet à Baie-Mahault.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Karla:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --braise:#5A1A15;--braise-clair:#7A2A21;--mangue:#F2A020;--bwa:#2E5A3C;
+  --sable:#F7EEDF;--nuit:#2A0E0B;
+  --display:"Fraunces",Georgia,serif;--texte:"Karla","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--braise);color:var(--sable);font-family:var(--texte);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{width:min(1080px,90vw);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);font-variation-settings:"SOFT" 60,"WONK" 1;font-weight:600;line-height:1.05;letter-spacing:-.015em;margin:0}
+.tete{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding:1.6rem 0 0}
+.marque{font-family:var(--display);font-variation-settings:"SOFT" 80,"WONK" 1;font-weight:800;font-size:1.35rem;letter-spacing:-.02em;text-decoration:none}
+.marque span{color:var(--mangue)}
+.tete nav{display:flex;gap:1.4rem;font-size:.95rem}
+.tete nav a{text-decoration:none;padding-bottom:2px;border-bottom:1px solid rgba(247,238,223,.3)}
+.tete nav a:hover,.tete nav a:focus-visible{border-color:var(--mangue);color:var(--mangue)}
+
+.entete{padding:clamp(3rem,8vw,5rem) 0 2rem}
+.entete h1{font-size:clamp(2.6rem,8vw,5rem);max-width:16ch}
+.entete p{max-width:50ch;margin-top:1.5rem;font-size:1.1rem;color:rgba(247,238,223,.85)}
+
+section{padding-bottom:clamp(3rem,7vw,5rem)}
+
+/* agenda : liste chronologique, la date porte l'information */
+.agenda{margin:2rem 0 0;padding:0;list-style:none}
+.evt{display:grid;grid-template-columns:8.5rem 1fr auto;gap:1.5rem 2rem;align-items:start;
+     padding:1.8rem 0;border-top:1px solid rgba(247,238,223,.25)}
+.evt:last-child{border-bottom:1px solid rgba(247,238,223,.25)}
+.quand{font-family:var(--display);font-variation-settings:"SOFT" 80,"WONK" 1;font-weight:700;
+       font-size:1.5rem;line-height:1.1;color:var(--mangue)}
+.quand small{display:block;font-family:var(--texte);font-size:.9rem;font-weight:400;color:rgba(247,238,223,.7);margin-top:.3rem}
+.evt h3{font-size:1.5rem;font-weight:700;margin-bottom:.4rem}
+.evt p{margin:0;color:rgba(247,238,223,.85);max-width:52ch}
+.tarif{font-family:var(--display);font-size:1.2rem;white-space:nowrap;font-variation-settings:"SOFT" 60,"WONK" 0}
+.bouton{display:inline-block;text-decoration:none;background:var(--mangue);color:var(--nuit);font-weight:700;font-size:1rem;padding:.95rem 1.7rem;border-radius:999px;border:2px solid var(--mangue)}
+.bouton:hover,.bouton:focus-visible{background:transparent;color:var(--mangue)}
+.bouton.fantome{background:transparent;color:var(--sable);border-color:rgba(247,238,223,.45)}
+.bouton.fantome:hover{border-color:var(--sable)}
+
+.promo{background:var(--bwa);padding:clamp(2.5rem,6vw,4rem) 0;margin-top:1rem}
+.promo-grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem}
+.promo h3{font-size:1.35rem;margin-bottom:.5rem}
+.promo p{margin:0;color:rgba(247,238,223,.85)}
+
+.rappel{padding:clamp(3rem,7vw,4.5rem) 0;text-align:left}
+.rappel h2{font-size:clamp(1.8rem,4vw,2.6rem);max-width:20ch}
+.rappel .actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.note{margin-top:2.5rem;font-size:.9rem;color:rgba(247,238,223,.55);max-width:62ch}
+
+footer{background:var(--nuit);padding:2.5rem 0 3rem;font-size:.95rem}
+.pied{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.pied p{margin:.2rem 0;color:rgba(247,238,223,.7)}
+a:focus-visible{outline:3px solid var(--mangue);outline-offset:3px}
+@media(max-width:760px){
+  .evt{grid-template-columns:1fr;gap:.5rem;padding:1.5rem 0}
+  .tarif{margin-top:.5rem}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap tete">
+  <span class="marque">Planète <span>Buffet</span></span>
+  <nav>
+    <a href="tel:+590690712188">0690 71 21 88</a>
+  </nav>
+</header>
+
+<div class="wrap entete">
+  <h1>Les soirées à venir</h1>
+  <p>Le buffet change de visage certains soirs&nbsp;: thème, musique, décoration. Les places partent vite, mieux vaut réserver.</p>
+</div>
+
+<!--
+  CONTENU À TENIR À JOUR — chaque bloc .evt est un événement.
+  Supprimer les événements passés, ajouter les nouveaux en haut.
+  Si la page reste vide trop longtemps, elle dessert le restaurant : mieux vaut
+  retirer le lien du menu que d'afficher un agenda périmé.
+-->
+<section class="wrap">
+  <ul class="agenda">
+    <li class="evt">
+      <div class="quand">Chaque vendredi<small>dès 19h</small></div>
+      <div>
+        <h3>Soirée fruits de mer</h3>
+        <p>Ouassous, crabes, langoustes et plateau de coquillages en plus du buffet habituel. Renfort sur l'îlot grill toute la soirée.</p>
+      </div>
+      <div class="tarif">Supplément 8&nbsp;€</div>
+    </li>
+    <li class="evt">
+      <div class="quand">Chaque dimanche<small>dès 19h</small></div>
+      <div>
+        <h3>Dimanche en famille</h3>
+        <p>Gratuit pour les enfants de moins de 6 ans, demi-tarif jusqu'à 12 ans. Coin desserts renforcé pour les petits.</p>
+      </div>
+      <div class="tarif">Enfants&nbsp;: −50&nbsp;%</div>
+    </li>
+    <li class="evt">
+      <div class="quand">24 décembre<small>service unique</small></div>
+      <div>
+        <h3>Réveillon de Noël</h3>
+        <p>Menu de fête, salle décorée, ambiance musicale. Réservation obligatoire, places limitées.</p>
+      </div>
+      <div class="tarif">Tarif à venir</div>
+    </li>
+    <li class="evt">
+      <div class="quand">31 décembre<small>service unique</small></div>
+      <div>
+        <h3>Réveillon du 31</h3>
+        <p>Buffet festif élargi, cocktail d'accueil et animation jusqu'au décompte. Réservation obligatoire, souvent complet début décembre.</p>
+      </div>
+      <div class="tarif">Tarif à venir</div>
+    </li>
+  </ul>
+</section>
+
+<section class="promo">
+  <div class="wrap promo-grille">
+    <div>
+      <h3>Groupes à partir de 10</h3>
+      <p>Tarif dégressif et salle préparée à l'avance. Appelez quelques jours avant pour caler le nombre de couverts.</p>
+    </div>
+    <div>
+      <h3>Anniversaires</h3>
+      <p>Table décorée et dessert d'anniversaire offert à la personne fêtée, sur demande à la réservation.</p>
+    </div>
+    <div>
+      <h3>Repas d'entreprise</h3>
+      <p>Facture au nom de la société, addition unique, pas de commande à collecter. Devis sur simple appel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap rappel">
+  <h2>Une date en tête&nbsp;? Réservez avant qu'elle ne parte.</h2>
+  <div class="actions">
+    <a class="bouton" href="tel:+590690712188">Réserver au 0690 71 21 88</a>
+  </div>
+  <p class="note">Les soirées à thème, les tarifs et les dates de fêtes sont donnés à titre indicatif et doivent être confirmés par le restaurant avant mise en ligne.</p>
+</section>
+
+<footer>
+  <div class="wrap pied">
+    <div>
+      <p>Planète Buffet — Moudong Plaza, Lot Moudong Sud, 97122 Baie-Mahault</p>
+      <p>Tous les soirs à partir de 19h</p>
+    </div>
+    <div>
+      <p><a href="tel:+590690712188">0690 71 21 88</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
